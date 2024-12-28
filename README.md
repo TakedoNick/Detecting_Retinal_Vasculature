@@ -10,6 +10,8 @@ Retinal vessel segmentation is crucial for diagnosing various diseases such as d
 
 The segmentation pipeline consists of three main stages:
 
+![Methodology]{imgs/methodology.png "Methodology"}
+
 ### 1. Preprocessing
 - **Input**: Fundus images.
 - **Output**: Preprocessed images with enhanced vessel structures and suppressed background noise.
