@@ -10,11 +10,13 @@ Retinal vessel segmentation is crucial for diagnosing various diseases such as d
 
 The segmentation pipeline consists of three main stages:
 
-![Methodology]{imgs/methodology.png "Methodology"}
+![Methodology](imgs/methodology.png "Methodology")
 
 ### 1. Preprocessing
 - **Input**: Fundus images.
 - **Output**: Preprocessed images with enhanced vessel structures and suppressed background noise.
+
+![PreProc](imgs/preproc.png)
 
 Steps:
 - Extract the green channel, which offers maximum contrast for vessels.
@@ -29,11 +31,16 @@ Steps:
   - 36 Zernike coefficients calculated from 17×17 windows.
   - Dominant coefficients selected based on maximum discriminability.
 
+![Zernike](imgs/zernike.png)
+![Zernike_plot](imgs/zer_plot.png)
+
 ### 3. Classification
 - Features are passed to an ANN:
   - Input Layer: 11 nodes (features).
   - Hidden Layers: 3 layers with 23 nodes each (tanh activation).
   - Output Layer: 2 nodes (softmax for vessel/background classification).
+
+![dominant_zernike](imgs/dom_zernike.png)
 
 ## Performance
 
@@ -67,16 +74,22 @@ pip install -r requirements.txt
 ```bash
 python train.py --data_dir <path_to_training_data>
 ```
+![Training Points](imgs/training_points_manual.png)
 
 ## Testing
 ```bash
 python test.py --data_dir <path_to_testing_data> --output_dir <output_path>
 ```
 
+![results](imgs/res_pred.png)
+
 ### Visualization
 ```bash
 python visualize_results.py --results_dir <path_to_results>
 ```
+
+![res_ROC](imgs/res_ROC.png)
+![res_AUC](imgs/res_AUC.png)
 
 # References
 References
